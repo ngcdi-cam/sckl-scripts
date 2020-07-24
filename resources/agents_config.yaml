@@ -1,0 +1,41 @@
+mas_config:       # Config common to all agents
+  ag_label: 'c'      # First letter of the name of the host/agent
+  ag_mem_limit: '550m'
+  ag_mem_res: '500m'
+  ag_cpus: 2
+  ag_command: ''
+  ag_port: '1600'
+  ag_ports: {'1600/tcp': None, '9095': None, '5266': None, '7780':None}
+  ag_wait_x: 21      # #Create x number of agents before wait
+  ag_wait_time: 30     ##Wait seconds between creation of x agents
+
+app:  # Application Specific and Stable Configuration
+  ag_data_in: sckl-data/condition/       # Relative to base_dir
+  ag_logs_dir: sckl-scripts/runs/     # Relative to base_dir
+  ag_data_dir: data/
+  ag_seed_addr: seed1
+  ag_seed_port: '1600'
+  ag_key_services: 'sc1, sc2, sc3'
+  agents:       # List of agents and order in which they will be provisioned
+    order: # Provision order of agents of each type to provision.
+    - 1 #serviceManager
+    - 2 #functionProvisioner
+    - 3 #digitalAsset
+
+run_app: #Application specific parameters
+  ag_img: 'ngcdi/sckl-demo:0.6'
+  agents:
+    labels:     # Labels of agents of each type to provision
+    - 'serviceManager'
+    - 'functionProvisioner'
+    - 'digiasset'
+  ag_sdnc_server: 'ryu-sdn-1'
+  ag_sdnc_port: '8080'
+  ag_netw_server: 'mnet1'
+  ag_netw_port: '9081'
+  ag_monitoring_url: '/stats/port/'
+  ag_netw_api_key: ''
+  ag_netw_urls:
+  - 'api/get_intent'
+  - 'api/push_intent'
+  ag_ui_url: ''

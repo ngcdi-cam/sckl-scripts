@@ -1,0 +1,15 @@
+run:    #Default run settings
+  run_base_label: datest1
+  q_runs: 1     # Quantity of runs
+  duration: 300    # Duration in seconds
+  infr_q:
+  - 1   #net_emu
+  - 1  #prom
+  - 0  #grafana
+  - 1  #ifxdb
+  - 1 #cadvisor
+  - 1   #sdnc
+  agents_q: # Quantity of agents of each type to provision in the same order of labels
+  - 1 # serviceManager
+  - 1 #functionProvisioner
+  - 10 #digitalAsset
